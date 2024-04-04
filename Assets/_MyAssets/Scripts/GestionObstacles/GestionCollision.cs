@@ -25,6 +25,7 @@ public class GestionCollision : MonoBehaviour
         {
             gameObject.GetComponent<MeshRenderer>().material = _materielInitial;
             _touche = false;
+            
         }
     }
 
