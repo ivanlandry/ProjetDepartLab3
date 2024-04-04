@@ -10,9 +10,11 @@ public class GestionJeu : MonoBehaviour
     // ***** Attributs *****
     private int _pointage = 0;  // Attribut qui conserve le nombre d'accrochages
     public int Pointage => _pointage; // Accesseur de l'attribut
+    public float TempsDepart => _tempsDepart;
 
     private int[] listeAccrochages = { 0, 0 };
     private float[] listeTemps = { 0.0f, 0.0f };
+    private float _tempsDepart = 0f;
  
     // ***** Méthodes privées *****
     private void Awake()
@@ -38,7 +40,13 @@ public class GestionJeu : MonoBehaviour
 
     private void Update()
     {
-
+        //Vérifie si je suis sur une scène qui n'est pas un niveau de jeu
+        //Si c'est le cas détruire le GameManager
+        if (SceneManager.GetActiveScene().buildIndex == 0 ||
+            SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // ***** Méthodes publiques ******

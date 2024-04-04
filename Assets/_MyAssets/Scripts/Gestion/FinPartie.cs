@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,7 @@ public class FinPartie : MonoBehaviour
             else
             {
                 Destroy(_player);
+                Console.Write("nombre de collision :" +GestionJeu.Instance.Pointage);
             }
 
         }
