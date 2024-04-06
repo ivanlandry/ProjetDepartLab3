@@ -15,7 +15,8 @@ public class GestionJeu : MonoBehaviour
     private int[] listeAccrochages = { 0, 0 };
     private float[] listeTemps = { 0.0f, 0.0f };
     private float _tempsDepart = 0f;
- 
+
+
     // ***** Méthodes privées *****
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class GestionJeu : MonoBehaviour
     private void Start()
     {
         _pointage = 0;
+        _tempsDepart = Time.time;
     }
 
     private void Update()
@@ -57,6 +59,7 @@ public class GestionJeu : MonoBehaviour
     public void AugmenterPointage()
     {
         _pointage++;
+        UIManagerGame.Instance.ChangerCollisions(_pointage);
     }
 
     // Accesseur qui retourne le temps pour le niveau 1
