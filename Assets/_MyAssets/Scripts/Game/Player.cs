@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // ***** Attributs *****
-    
+
     [SerializeField] private float _vitesse = 800f;  //Vitesse de déplacement du joueur
     [SerializeField] private float _rotationSpeed = 700f;
     private Rigidbody _rb;  // Variable pour emmagasiner le rigidbody du joueur
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private float _tempsDepart = -1f;
     
     //  ***** Méthodes privées *****
-    
+
     private void Start()
     {
         // Position initiale du joueur
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
         if (_aBouger && _tempsDepart == -1)
         {
             _tempsDepart = Time.time;
+
         }
     }
     // Ici on utilise FixedUpdate car les mouvements du joueurs implique le déplacement d'un rigidbody
@@ -46,9 +47,10 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3(positionX, 0f, positionZ);  // Établi la direction du vecteur à appliquer sur le joueur
         direction.Normalize();
         _rb.velocity = direction * Time.deltaTime * _vitesse;  // Applique la vélocité sur le corps du joueur dans la direction du vecteur
-        
+
         if (direction != Vector3.zero)
         {
+       
             _aBouger = true;
             Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotationSpeed * Time.fixedDeltaTime);
@@ -59,12 +61,14 @@ public class Player : MonoBehaviour
 
     public float GetTempsDepart()
     {
-        if ( _tempsDepart == -1)
+        if (_tempsDepart == -1)
         {
+          
             return 0;
         }
         else
         {
+           
             return _tempsDepart;
         }
     }
@@ -73,4 +77,5 @@ public class Player : MonoBehaviour
     {
         return _aBouger;
     }
+
 }

@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class UIManagerGame : MonoBehaviour
 {
@@ -35,10 +36,14 @@ public class UIManagerGame : MonoBehaviour
     }
 
     // Update is called once per frame
+   
     void Update()
     {
+
         float temps = Time.time - GestionJeu.Instance.TempsDepart;
-        _textTenps.text = "Temps : "+ temps.ToString("f2");
+       
+        _textTenps.text = "Temps : " + temps.ToString("f2");
+           
         GestionPause();
     }
 

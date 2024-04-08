@@ -16,7 +16,6 @@ public class GestionJeu : MonoBehaviour
     private float[] listeTemps = { 0.0f, 0.0f };
     private float _tempsDepart = 0f;
 
-
     // ***** Méthodes privées *****
     private void Awake()
     {
