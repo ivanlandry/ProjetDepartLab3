@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private bool _aBouger = false;
     private float _tempsDepart = -1f;
     
+
     //  ***** Méthodes privées *****
 
     private void Start()
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
         //transform.position = new Vector3(-30f, 0.51f, -30f);  // place le joueur à sa position initiale 
         _rb = GetComponent<Rigidbody>();  // Récupère le rigidbody du Player
         _aBouger = false;
+    
     }
 
 
@@ -35,11 +37,12 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         MouvementsJoueur();
+      
     }
 
-    /*
-     * Méthode qui gère les déplacements du joueur
-     */
+    
+    //  Méthode qui gère les déplacements du joueur
+     
     private void MouvementsJoueur()
     {
         float positionX = Input.GetAxisRaw("Horizontal"); // Récupère la valeur de l'axe horizontal de l'input manager
@@ -61,13 +64,11 @@ public class Player : MonoBehaviour
     public float GetTempsDepart()
     {
         if (_tempsDepart == -1)
-        {
-          
+        { 
             return 0;
         }
         else
         {
-           
             return _tempsDepart;
         }
     }
@@ -77,4 +78,6 @@ public class Player : MonoBehaviour
         return _aBouger;
     }
 
+    
 }
+

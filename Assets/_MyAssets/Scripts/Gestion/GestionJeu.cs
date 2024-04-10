@@ -33,6 +33,7 @@ public class GestionJeu : MonoBehaviour
         }
     }
 
+
     private void Start()
     {
         _pointage = 0;
@@ -78,5 +79,7 @@ public class GestionJeu : MonoBehaviour
     {
         listeAccrochages[niveau-1] = accrochages;
         listeTemps[niveau-1] = temps;
+      
     }
+
 }

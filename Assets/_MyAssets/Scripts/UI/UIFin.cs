@@ -10,6 +10,8 @@ public class UIFin : MonoBehaviour
     [SerializeField] private TMP_Text _txtCollisionTotal = default;
     [SerializeField] private TMP_Text _txtCollisionNiv1 = default;
     [SerializeField] private TMP_Text _txtCollisionNiv2 = default;
+    [SerializeField] private TMP_Text _txtTempsNiv1 = default;
+    [SerializeField] private TMP_Text _txtTempsNiv2 = default;
     [SerializeField] private TMP_Text _txtTempsFinal = default;
 
     // Start is called before the first frame update
@@ -19,6 +21,8 @@ public class UIFin : MonoBehaviour
         _txtCollisionTotal.text = "Collisions total : " + GestionJeu.Instance.Pointage.ToString();
         _txtCollisionNiv1.text = "Collisions Niveau 1 : " + GestionJeu.Instance.GetAccrochagesNiveau(1);
         _txtCollisionNiv2.text = "Collisions Niveau 2 : " + (GestionJeu.Instance.Pointage - GestionJeu.Instance.GetAccrochagesNiveau(1));
+        _txtTempsNiv1.text= "Temps niveau 1 : "+GestionJeu.Instance.GetTempsNiveau(1);
+        _txtTempsNiv2.text = "Temps niveau 2 : " + GestionJeu.Instance.GetTempsNiveau(2);
         _txtTempsFinal.text = "Temps final :" + ((Time.time - GestionJeu.Instance.TempsDepart) + GestionJeu.Instance.Pointage).ToString("f2") + " secondes";
       
     }

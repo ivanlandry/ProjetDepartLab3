@@ -36,12 +36,10 @@ public class UIManagerGame : MonoBehaviour
     }
 
     // Update is called once per frame
-   
+  
     void Update()
     {
-
         float temps = Time.time - GestionJeu.Instance.TempsDepart;
-       
         _textTenps.text = "Temps : " + temps.ToString("f2");
            
         GestionPause();
