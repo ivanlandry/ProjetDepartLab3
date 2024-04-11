@@ -34,12 +34,18 @@ public class FinPartie : MonoBehaviour
             _finPartie = true; // met le booléen à vrai pour indiquer la fin de la partie
             int noScene = SceneManager.GetActiveScene().buildIndex; // Récupère l'index de la scène en cours
             GestionJeu.Instance.SetNiveau(GestionJeu.Instance.Pointage, Time.time - _player.GetTempsDepart(), _idNiveau);
-           
+
+            
             if (noScene != SceneManager.sceneCountInBuildSettings -1)
             {
                 SceneManager.LoadScene(noScene + 1); 
             }
+            GestionJeu.Instance.toogleOffTimer();
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                GestionJeu.Instance.SetTempsNiveau1(GestionJeu.Instance.Timer);
+            }
         }
-        
+
     }
 }

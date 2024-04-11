@@ -17,10 +17,13 @@ public class UIManagerGame : MonoBehaviour
 
     private bool _enPause = false;
 
+
     private void Start()
     {
         _txtCollisions.text = "Collisions : " + GestionJeu.Instance.Pointage;
         Time.timeScale = 1;
+       
+        
     }
 
     private void Awake()
@@ -34,14 +37,17 @@ public class UIManagerGame : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+   
     // Update is called once per frame
-  
     void Update()
     {
-        float temps = Time.time - GestionJeu.Instance.TempsDepart;
-        _textTenps.text = "Temps : " + temps.ToString("f2");
-           
+        
+        _textTenps.text = "Temps : " + GestionJeu.Instance.Timer.ToString("f2");
+        // float temps = Time.time - GestionJeu.Instance.TempsDepart;
+        // _textTenps.text = "Temps : " + temps.ToString("f2");
+
+
+
         GestionPause();
     }
 
@@ -50,10 +56,10 @@ public class UIManagerGame : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && !_enPause)
         {
             _panneauPause.SetActive(true);
-            Time.timeScale= 0;
+            Time.timeScale = 0;
             _enPause = true;
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && _enPause)
+        else if (Input.GetKeyDown(KeyCode.Escape) && _enPause)
         {
             EnleverPause();
         }

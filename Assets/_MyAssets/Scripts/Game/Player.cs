@@ -9,10 +9,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float _vitesse = 800f;  //Vitesse de déplacement du joueur
     [SerializeField] private float _rotationSpeed = 700f;
     private Rigidbody _rb;  // Variable pour emmagasiner le rigidbody du joueur
-    private bool _aBouger = false;
-    private float _tempsDepart = -1f;
-    
+    private  bool _aBouger = false;
+    private  float _tempsDepart = -1f;
 
+
+    private static bool _aBouger2 = false;
+    private static float _tempsDepart2 = -1f;
     //  ***** Méthodes privées *****
 
     private void Start()
@@ -21,7 +23,7 @@ public class Player : MonoBehaviour
         //transform.position = new Vector3(-30f, 0.51f, -30f);  // place le joueur à sa position initiale 
         _rb = GetComponent<Rigidbody>();  // Récupère le rigidbody du Player
         _aBouger = false;
-    
+
     }
 
 
@@ -30,14 +32,20 @@ public class Player : MonoBehaviour
         if (_aBouger && _tempsDepart == -1)
         {
             _tempsDepart = Time.time;
+            _tempsDepart2=Time.time;
 
         }
+        /*if (!_aBouger && Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            _aBouger = true;
+            _tempsDepart = Time.time;
+        }*/
     }
     // Ici on utilise FixedUpdate car les mouvements du joueurs implique le déplacement d'un rigidbody
     private void FixedUpdate()
     {
         MouvementsJoueur();
-      
+
     }
 
     
@@ -53,6 +61,7 @@ public class Player : MonoBehaviour
 
         if (direction != Vector3.zero)
         {
+            _aBouger2=true;
             _aBouger = true;
             Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotationSpeed * Time.fixedDeltaTime);
@@ -61,7 +70,7 @@ public class Player : MonoBehaviour
 
     // ***** Méthodes publiques *****
 
-    public float GetTempsDepart()
+    public  float GetTempsDepart()
     {
         if (_tempsDepart == -1)
         { 
@@ -72,12 +81,26 @@ public class Player : MonoBehaviour
             return _tempsDepart;
         }
     }
-
-    public bool GetABouger()
+    public static float GetTempsDepart2()
+    {
+        if (_tempsDepart2 == -1)
+        {
+            return 0;
+        }
+        else
+        {
+            return _tempsDepart2;
+        }
+    }
+    public static bool GetABouger2()
+    {
+        return _aBouger2;
+    }
+    public  bool GetABouger()
     {
         return _aBouger;
     }
 
-    
+
 }
 

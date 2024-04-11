@@ -15,6 +15,25 @@ public class GestionJeu : MonoBehaviour
     private int[] listeAccrochages = { 0, 0 };
     private float[] listeTemps = { 0.0f, 0.0f };
     private float _tempsDepart = 0f;
+    private float _tempsNiveau1;
+
+    private float _timer = 0;
+    private float _startTime;
+    private bool _timerStarted = false;
+    public float Timer => _timer;
+    public float StartTime => _startTime;
+    public bool TimerStarted => _timerStarted;
+    public float TempsNiveau1 => _tempsNiveau1;
+
+    public void toogleOffTimer()
+    {
+        _timerStarted = false;
+    }
+
+    public void SetTempsNiveau1(float temps)
+    {
+        _tempsNiveau1= temps;
+    }
 
     // ***** Méthodes privées *****
     private void Awake()
@@ -48,6 +67,17 @@ public class GestionJeu : MonoBehaviour
             SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
         {
             Destroy(gameObject);
+        }
+
+        if (Input.anyKey && !_timerStarted)
+        {
+            _timerStarted = true;
+            _startTime = Time.time - _timer;
+        }
+
+        if (_timerStarted)
+        {
+            _timer = Time.time - _startTime;
         }
     }
 

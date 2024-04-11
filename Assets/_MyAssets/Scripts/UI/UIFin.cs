@@ -17,13 +17,13 @@ public class UIFin : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        _txtTempsTotal.text = "Temps total : " + (Time.time - GestionJeu.Instance.TempsDepart).ToString("f2") + " secondes";
+        _txtTempsTotal.text = "Temps total : " + (GestionJeu.Instance.Timer).ToString("f2") + " secondes";
         _txtCollisionTotal.text = "Collisions total : " + GestionJeu.Instance.Pointage.ToString();
         _txtCollisionNiv1.text = "Collisions Niveau 1 : " + GestionJeu.Instance.GetAccrochagesNiveau(1);
         _txtCollisionNiv2.text = "Collisions Niveau 2 : " + (GestionJeu.Instance.Pointage - GestionJeu.Instance.GetAccrochagesNiveau(1));
-        _txtTempsNiv1.text= "Temps niveau 1 : "+GestionJeu.Instance.GetTempsNiveau(1);
-        _txtTempsNiv2.text = "Temps niveau 2 : " + GestionJeu.Instance.GetTempsNiveau(2);
-        _txtTempsFinal.text = "Temps final :" + ((Time.time - GestionJeu.Instance.TempsDepart) + GestionJeu.Instance.Pointage).ToString("f2") + " secondes";
+        _txtTempsNiv1.text= "Temps niveau 1 : "+GestionJeu.Instance.TempsNiveau1.ToString("f2");
+        _txtTempsNiv2.text = "Temps niveau 2 : " + (GestionJeu.Instance.Timer- GestionJeu.Instance.TempsNiveau1).ToString("f2");
+        _txtTempsFinal.text = "Temps final :" + ((GestionJeu.Instance.Timer) + GestionJeu.Instance.Pointage).ToString("f2") + " secondes";
       
     }
 
